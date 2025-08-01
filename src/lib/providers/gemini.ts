@@ -14,16 +14,12 @@ import { Embeddings } from '@langchain/core/embeddings';
 
 const geminiChatModels: Record<string, string>[] = [
   {
-    displayName: 'Gemini 2.5 Flash Preview 05-20',
-    key: 'gemini-2.5-flash-preview-05-20',
+    displayName: 'Gemini 2.5 Flash',
+    key: 'gemini-2.5-flash',
   },
   {
-    displayName: 'Gemini 2.5 Pro Preview',
-    key: 'gemini-2.5-pro-preview-05-06',
-  },
-  {
-    displayName: 'Gemini 2.5 Pro Experimental',
-    key: 'gemini-2.5-pro-preview-05-06',
+    displayName: 'Gemini 2.5 Pro',
+    key: 'gemini-2.5-pro',
   },
   {
     displayName: 'Gemini 2.0 Flash',
@@ -75,7 +71,7 @@ export const loadGeminiChatModels = async () => {
         displayName: model.displayName,
         model: new ChatGoogleGenerativeAI({
           apiKey: geminiApiKey,
-          modelName: model.key,
+          model: model.key,
           temperature: 0.7,
         }) as unknown as BaseChatModel,
       };
@@ -108,7 +104,7 @@ export const loadGeminiEmbeddingModels = async () => {
 
     return embeddingModels;
   } catch (err) {
-    console.error(`Error loading OpenAI embeddings models: ${err}`);
+    console.error(`Error loading Gemini embeddings models: ${err}`);
     return {};
   }
 };
